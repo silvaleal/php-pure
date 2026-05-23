@@ -1,9 +1,5 @@
 <?php 
 
-use App\Migrations\Courses;
-use App\Migrations\School;
-use App\Migrations\Student;
-use App\Migrations\Teachers;
 use RotyPHP\Database;
 
 require __DIR__."/vendor/autoload.php";

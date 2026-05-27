@@ -19,7 +19,7 @@
           <div>
             <h1 class="text-2xl font-bold">Editar Plano</h1>
           </div>
-          <form class="py-8" method="post">
+          <form class="py-8" method="POST" action="/admin/plan/<?=$plan["uuid"]?>">
               <input type="hidden" name="_method" value="DELETE">
 
               <button type="submit" class="bg-violet-500 text-white px-5 py-3 rounded-2xl">
@@ -92,6 +92,7 @@
                   class="bg-violet-600 hover:bg-violet-500 transition px-6 py-3 rounded-2xl font-medium">
                   Editar Plano
                 </button>
+              </div>
             </form>
           </div>
         </section>

@@ -21,12 +21,6 @@
           </a>
 
           <a
-            href="/admin/subscriptions"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-zinc-800 transition">
-            Assinaturas
-          </a>
-
-          <a
             href="/admin/plans"
             class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-zinc-800 transition">
             Planos

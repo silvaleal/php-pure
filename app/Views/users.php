@@ -33,6 +33,7 @@
               </div>
 
               <button
+                onclick="window.location.href='/admin/users/create'"
                 class="bg-blue-600 hover:bg-blue-700 transition px-4 py-2 rounded-xl font-medium">
                 + Novo Usuário
               </button>
@@ -44,67 +45,33 @@
                   <tr class="text-left text-zinc-400 border-b border-zinc-800">
                     <th class="p-4">Nome</th>
                     <th class="p-4">Email</th>
-                    <th class="p-4">Plano</th>
-                    <th class="p-4">Status</th>
-                    <th class="p-4">Data de Criação</th>
+                    <th class="p-4">Role</th>
                     <th class="p-4">Ações</th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  <tr class="border-b border-zinc-800 hover:bg-zinc-800/40">
-                    <td class="p-4">Lucas</td>
-                    <td class="p-4">lucas@example.com</td>
-                    <td class="p-4">PRO</td>
-                    <td class="p-4">
-                      <span
-                        class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm"
-                      >
-                        Ativo
-                      </span>
-                    </td>
-                    <td class="p-4 text-zinc-400">15/05/2026</td>
-                    <td class="p-4 flex gap-2">
-                      <button class="text-blue-400 hover:text-blue-300">Editar</button>
-                      <button class="text-red-400 hover:text-red-300">Deletar</button>
-                    </td>
-                  </tr>
-
-                  <tr class="border-b border-zinc-800 hover:bg-zinc-800/40">
-                    <td class="p-4">Amanda</td>
-                    <td class="p-4">amanda@example.com</td>
-                    <td class="p-4">Basic</td>
-                    <td class="p-4">
-                      <span
-                        class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-sm"
-                      >
-                        Trial
-                      </span>
-                    </td>
-                    <td class="p-4 text-zinc-400">14/05/2026</td>
-                    <td class="p-4 flex gap-2">
-                      <button class="text-blue-400 hover:text-blue-300">Editar</button>
-                      <button class="text-red-400 hover:text-red-300">Deletar</button>
-                    </td>
-                  </tr>
-
-                  <tr class="hover:bg-zinc-800/40">
-                    <td class="p-4">Carlos</td>
-                    <td class="p-4">carlos@example.com</td>
-                    <td class="p-4">Enterprise</td>
-                    <td class="p-4">
-                      <span
-                        class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-sm"
-                      >
-                        Suspenso
-                      </span>
-                    </td>
-                    <td class="p-4 text-zinc-400">10/05/2026</td>
-                    <td class="p-4 flex gap-2">
-                      <button class="text-blue-400 hover:text-blue-300">Editar</button>
-                      <button class="text-red-400 hover:text-red-300">Deletar</button>
-                    </td>
-                  </tr>
+                  <?php if (!empty($users)): ?>
+                    <?php foreach ($users as $user): ?>
+                      <tr class="hover:bg-zinc-800/40">
+                        <td class="p-4"><?= htmlspecialchars($user["name"] ?? "", ENT_QUOTES, "UTF-8") ?></td>
+                        <td class="p-4"><?= htmlspecialchars($user["email"] ?? "", ENT_QUOTES, "UTF-8") ?></td>
+                        <td class="p-4"><?= htmlspecialchars($user["role"] ?? "", ENT_QUOTES, "UTF-8") ?></td>
+                        <td class="p-4">
+                          <div class="flex gap-3">
+                            <a class="text-blue-400 hover:text-blue-300" href="/admin/user/<?= $user["uuid"] ?>">Editar</a>
+                            <form method="POST" action="/admin/user/<?= $user["uuid"] ?>">
+                              <input type="hidden" name="_method" value="DELETE">
+                            </form>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
+                  <?php else: ?>
+                    <tr>
+                      <td class="p-6 text-zinc-400" colspan="4">Nenhum usuário cadastrado.</td>
+                    </tr>
+                  <?php endif; ?>
                 </tbody>
               </table>
             </div>

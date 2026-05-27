@@ -91,36 +91,6 @@
                 </button>
               </div>
             </div>
-
-            <!-- Integração -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl">
-              <div class="p-6 border-b border-zinc-800">
-                <h3 class="text-xl font-semibold">Integração</h3>
-              </div>
-
-              <div class="p-6 space-y-6">
-                <div>
-                  <label class="block text-sm font-medium mb-2">Chave da API</label>
-                  <div class="flex gap-2">
-                    <input type="password" value="sk_live_51234567890" readonly
-                      class="flex-1 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2 text-zinc-100 focus:outline-none" />
-                    <button class="bg-zinc-800 hover:bg-zinc-700 transition px-4 py-2 rounded-xl">
-                      Copiar
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <label class="block text-sm font-medium mb-2">Webhook URL</label>
-                  <input type="url" placeholder="https://seu-dominio.com/webhook" 
-                    class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2 text-zinc-100 focus:outline-none focus:border-blue-600" />
-                </div>
-
-                <button class="bg-blue-600 hover:bg-blue-700 transition px-6 py-2 rounded-xl font-medium">
-                  Salvar Alterações
-                </button>
-              </div>
-            </div>
           </div>
         </section>
       </main>

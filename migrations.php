@@ -1,19 +1,24 @@
-<?php 
-
-use RotyPHP\Database;
+<?php
 
 require __DIR__."/vendor/autoload.php";
+
+use App\Migrations\Plans;
+use App\Migrations\Signatures;
+use App\Migrations\Users;
+use RotyPHP\Database;
 
 $database = Database::setConnector(__DIR__."/database.db");
 
 foreach ([
-    
+    new Users(),
+    new Plans(),
+    new Signatures()
     ] as $migration) {
     $migration->columns();
 
     $query = $migration->build();
 
-    $pdo = new PDO("sqlite:database2.db");
+    $pdo = new PDO("sqlite:database.db");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $pdo->exec($query);

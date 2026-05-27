@@ -3,6 +3,8 @@
 use Dotenv\Dotenv;
 use RotyPHP\Database;
 
+session_start();
+
 require __DIR__."/vendor/autoload.php";
 
 # phpdotenv -> composer require vlucas/phpdotenv

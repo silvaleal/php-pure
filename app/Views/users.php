@@ -11,58 +11,8 @@
 
   <body class="bg-zinc-950 text-zinc-100">
     <div class="flex h-screen overflow-hidden">
-      <aside
-        class="w-72 bg-zinc-900 border-r border-zinc-800 flex flex-col"
-      >
-        <div class="h-20 flex items-center px-6 border-b border-zinc-800">
-          <div>
-            <h1 class="text-2xl font-bold"><?= $_ENV['APP_NAME'] ?></h1>
-          </div>
-        </div>
-
-        <nav class="flex-1 p-4 space-y-2">
-          <a
-            href="/admin"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-zinc-800 transition">
-            Dashboard
-          </a>
-
-          <a
-            href="/admin/users"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-800 text-white font-medium">
-            Usuários
-          </a>
-
-          <a
-            href="/admin/subscriptions"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-zinc-800 transition">
-            Assinaturas
-          </a>
-
-          <a
-            href="/admin/plans"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-zinc-800 transition">
-            Planos
-          </a>
-
-          <a
-            href="/admin/settings"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-zinc-800 transition">
-            Configurações
-          </a>
-        </nav>
-
-        <div class="p-4 border-t border-zinc-800">
-          <div
-            class="bg-zinc-800 rounded-2xl p-4 flex items-center gap-3">
-            <div>
-              <h2 class="font-semibold">José</h2>
-              <a class="text-sm text-zinc-400" href="/admin/logout">Desconectar</a>
-            </div>
-          </div>
-        </div>
-      </aside>
-
+      <?php include "components/ui/sidebar.php"; ?>
+      
       <main class="flex-1 overflow-y-auto">
         <header
           class="h-20 border-b border-zinc-800 bg-zinc-900/70 backdrop-blur flex items-center justify-between px-8">
@@ -70,6 +20,7 @@
             <h2 class="text-2xl font-bold">Usuários</h2>
           </div>
         </header>
+        <?php include "components/alerts.php"; ?>
 
         <section class="p-8 space-y-8">
           <div class="bg-zinc-900 border border-zinc-800 rounded-2xl">

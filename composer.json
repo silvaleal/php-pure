@@ -13,7 +13,7 @@
     ],
     "require": {
         "flightphp/core": "^3.18",
-        "silvaleal/rotyphp": "*",
+        "silvaleal/rotyphp": "0.0.8.2",
         "vlucas/phpdotenv": "^5.6"
     }
 }

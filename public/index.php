@@ -4,7 +4,7 @@ require __DIR__."/../bootstrap.php";
 
 ## Maintenance mode
 
-if (True) {
+if (False) {
     echo "Maintenance mode is on. Please check back later.";
     die;
 }

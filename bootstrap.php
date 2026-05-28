@@ -12,7 +12,7 @@ $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 # RotyPHP -> composer require silvaleal/rotyphp
-Database::setConnector(__DIR__ . '/database.db');
+Database::setConnector(__DIR__ . "/database.db");
 
 # FlightPHP -> composer require flightphp/core
 require __DIR__."/app/Routes/main.php";

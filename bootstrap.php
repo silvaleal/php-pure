@@ -20,5 +20,3 @@ require __DIR__."/app/Routes/main.php";
 Flight::set('flight.log_errors', true);
 Flight::set('flight.handle_errors', true);
 Flight::set("flight.views.path", __DIR__."/app/Views");
-
-Flight::start();

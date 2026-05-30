@@ -2,6 +2,7 @@
 
 require __DIR__."/vendor/autoload.php";
 
+
 use App\Migrations\App;
 use RotyPHP\Database;
 

@@ -17,6 +17,19 @@ Database::setConnector(__DIR__ . "/database.db");
 # FlightPHP -> composer require flightphp/core
 require __DIR__."/app/Routes/main.php";
 
-Flight::set('flight.log_errors', true);
-Flight::set('flight.handle_errors', true);
-Flight::set("flight.views.path", __DIR__."/app/Views");
+$app = Flight::app();
+
+$app->set('flight.log_errors', true);
+$app->set('flight.handle_errors', true);
+$app->set("flight.views.path", __DIR__."/app/Views");
+
+$app->map('render', function(string $template, ?array $data=null, ?string $block=null): void {
+    $latte = new Latte\Engine;
+
+    // Onde o latte armazena especificamente seu cache
+    $latte->setCacheDirectory(__DIR__ . '/cache/');
+
+    $finalPath = Flight::get('flight.views.path') ."/". $template.".latte";
+
+    $latte->render($finalPath, $data ?? [], $block);
+});

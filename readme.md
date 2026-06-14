@@ -1,4 +1,5 @@
-![alt text](assets/image.png)
+<img src="assets/image.png" width="300" alt="PHP-Pure">
+
 # Introdução
 
 PHP-Pure é um template projetado para ser o primeiro contato de iniciantes com aplicações PHP estruturadas antes de migrarem para frameworks como Laravel, Symfony ou CodeIgniter.

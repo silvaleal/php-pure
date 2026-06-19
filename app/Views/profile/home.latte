@@ -1,0 +1,8 @@
+{layout '../components/layout.latte'}
+
+{block content}
+    {if $session->has('auth')}
+        <p>Olá, {$session->get('auth')['nickname']}</p>
+    {/if}
+
+{/block}

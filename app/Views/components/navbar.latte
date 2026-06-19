@@ -1,0 +1,15 @@
+<nav>
+    <div class="flex justify-between">
+        <a href="#">{$_ENV['APP_NAME'] ?? "php-pure"}</a>
+        <div>
+            <a href="/guilds">Guildas</a>
+
+            {if isset($_SESSION['auth'])}
+                <a href="/profile">Perfil</a>
+            {else}
+                <a href="/login">Login</a>
+            {/if}
+
+        </div>
+    </div>
+</nav>

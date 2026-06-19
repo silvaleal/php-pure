@@ -4,13 +4,12 @@ require __DIR__."/vendor/autoload.php";
 
 
 use App\Migrations\App;
-use App\Migrations\Users;
 use RotyPHP\Database;
 
 $database = Database::setConnector(__DIR__."/database.db");
 
 foreach ([
-    new App(), new Users()
+    new App()
     ] as $migration) {
     $migration->columns();
 

@@ -1,25 +1,5 @@
 <?php
 
-use App\Controllers\AutenticateController;
-use App\Controllers\GuildController;
 use App\Controllers\HomeController;
-use App\Controllers\ProfileController;
-use App\Middlewares\AuthMiddleware;
-use App\Middlewares\GuestMiddleware;
-use App\Models\User;
-use App\Services\AutenticateService;
-use App\Services\GuildService;
-
-$guildController = new GuildController(new GuildService());
-
-$authController = new AutenticateController(new AutenticateService(new User()));
 
 Flight::route('GET /', [HomeController::class, 'index']);
-Flight::route('GET /guilds', [$guildController, 'index']);
-
-Flight::route('GET /login', [$authController, 'login'])->addMiddleware(GuestMiddleware::class);
-Flight::route('POST /login', [$authController, 'attempt'])->addMiddleware(GuestMiddleware::class);
-Flight::route('GET /register', [$authController, 'register'])->addMiddleware(GuestMiddleware::class);
-Flight::route('POST /register', [$authController, 'store'])->addMiddleware(GuestMiddleware::class);
-
-Flight::route('GET /profile', [ProfileController::class, 'index'])->addMiddleware(AuthMiddleware::class);

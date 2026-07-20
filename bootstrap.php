@@ -1,11 +1,13 @@
 <?php 
 
 use Dotenv\Dotenv;
+use PureSession\PureSession;
 use RotyPHP\Database;
 
-session_start();
-
 require __DIR__."/vendor/autoload.php";
+
+# puresession -> composer require silvaleal/puresession
+PureSession::start();
 
 # phpdotenv -> composer require vlucas/phpdotenv
 $dotenv = Dotenv::createImmutable(__DIR__);

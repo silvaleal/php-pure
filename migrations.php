@@ -2,8 +2,7 @@
 
 require __DIR__."/vendor/autoload.php";
 
-
-use App\Migrations\App;
+use Database\Migrations\App;
 use RotyPHP\Database;
 
 $database = Database::setConnector(__DIR__."/database.db");

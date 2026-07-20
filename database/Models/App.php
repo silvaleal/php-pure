@@ -1,6 +1,6 @@
 <?php
  
-namespace App\Models;
+namespace Database\Models;
 
 use RotyPHP\SQLite3\SQLiteModel;
  

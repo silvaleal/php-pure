@@ -1,5 +1,7 @@
 {
     "name": "silvaleal/php-pure",
+    "type": "project",
+    "version": "0.0.1",
     "autoload": {
         "psr-4": {
             "App\\": "app/",

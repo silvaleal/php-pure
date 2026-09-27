@@ -2,9 +2,9 @@
  
 namespace Database\Models;
 
-use RotyPHP\SQLite3\SQLiteModel;
+use RotyPHP\Model;
  
-class App extends SQLiteModel
+class App extends Model
 {
     public ?string $table = 'app';
 }

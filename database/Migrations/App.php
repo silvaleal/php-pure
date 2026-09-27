@@ -2,9 +2,9 @@
 
 namespace Database\Migrations;
 
-use RotyPHP\SQLite3\SQLiteMigration;
+use RotyPHP\MySQL\MySQLSchema; 
  
-class App extends SQLiteMigration {
+class App extends MySQLSchema {
     public string $table = "app";
  
     public function columns() {

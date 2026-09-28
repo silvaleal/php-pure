@@ -1,12 +1,13 @@
 <?php
 
-use Dotenv\Dotenv;
-use PureSession\PureSession;
-use RotyPHP\MySQL\MySQLDriver;
-use RotyPHP\RotyDatabase;
-use RotyPHP\SQLite3\SQLiteDriver;
 
 require __DIR__ . "/vendor/autoload.php";
+
+use Dotenv\Dotenv;
+use PureSession\PureSession;
+use RotyPHP\RotyDatabase;
+use RotyPHP\RotyDriver;
+use RotyPHP\SQLite3\SQLiteDriver;
 
 # puresession -> composer require silvaleal/puresession
 PureSession::start();
@@ -16,25 +17,11 @@ $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 # RotyPHP -> composer require silvaleal/rotyphp
-switch ($_ENV['DB_DRIVER']) {
-    case 'sqlite':
-        $driver = new SQLiteDriver(__DIR__ . "/".$_ENV['DB_SQLITE_FILE']);
-        break;
+RotyDriver::setName("sqlite");
 
-    case 'mysql':
-        $driver = new MySQLDriver(
-            $_ENV['DB_MYSQL_HOST'], 
-            $_ENV["DB_MYSQL_USER"], 
-            $_ENV["DB_MYSQL_PASSWORD"], 
-            $_ENV["DB_MYSQL_DATABASE"]);
-        break;
+SQLiteDriver::define(__DIR__."/".$_ENV['DB_SQLITE_FILE']);
 
-    default:
-        echo "banco de dados não conhecido. Use: 'sqlite' ou 'mysql' em seu .env";
-        die;
-}
-
-RotyDatabase::setConnector($driver);
+RotyDatabase::setConnector(RotyDriver::getDriver());
 
 # FlightPHP -> composer require flightphp/core
 require __DIR__ . "/app/Routes/main.php";

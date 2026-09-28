@@ -4,31 +4,20 @@ require __DIR__."/vendor/autoload.php";
 
 use Database\Migrations\App;
 use Dotenv\Dotenv;
-use RotyPHP\MySQL\MySQLDriver;
+use RotyPHP\RotyDatabase;
+use RotyPHP\RotyDriver;
 use RotyPHP\SQLite3\SQLiteDriver;
 
 # phpdotenv -> composer require vlucas/phpdotenv
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-switch ($_ENV['DB_DRIVER']) {
-    case 'sqlite':
-        $driver = new SQLiteDriver(__DIR__ . "/".$_ENV['DB_SQLITE_FILE']);
-        break;
+# database
+RotyDriver::setName("sqlite");
 
-    case 'mysql':
-        $driver = new MySQLDriver(
-            $_ENV['DB_MYSQL_HOST'], 
-            $_ENV["DB_MYSQL_USER"], 
-            $_ENV["DB_MYSQL_PASSWORD"], 
-            $_ENV["DB_MYSQL_DATABASE"]);
-        break;
+SQLiteDriver::define(__DIR__."/".$_ENV['DB_SQLITE_FILE']);
 
-    default:
-        echo "banco de dados não conhecido. Use: 'sqlite' ou 'mysql' em seu .env";
-        die;
-}
-
+RotyDatabase::setConnector(RotyDriver::getDriver());
 
 foreach ([
     new App()
@@ -37,7 +26,7 @@ foreach ([
 
     $query = $schema->build();
 
-    $pdo = $driver->getPDO();
+    $pdo = RotyDatabase::getConnector();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $pdo->exec($query);
